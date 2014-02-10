@@ -39,19 +39,21 @@ window.addEventListener('load', function () {
     }
 
     if (adminInput) {
-        var save = function () {
-            if (!adminInput.value) {
-                return;
-            }
-            remote.push(adminInput.value);
-            if (adminHistory) {
-                adminHistory.innerHTML += '<div>' + adminInput.value + '</div>';
-            }
-            adminInput.value = '';
-        };
         adminInput.addEventListener('keydown', function (e) {
             if (e.keyCode === 13) {
-                save();
+                e.preventDefault();
+
+                var newQuote = adminInput.value.replace(/\n/g, '').trim();
+                if (!newQuote) {
+                    return;
+                }
+                remote.push(newQuote);
+
+                adminInput.value = '';
+
+                if (adminHistory) {
+                    adminHistory.innerHTML += '<div>' + newQuote + '</div>';
+                }
             }
         });
     }
