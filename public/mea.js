@@ -14,7 +14,9 @@ window.addEventListener('load', function () {
         remote.on('value', function (data) {
             var q = data.val();
             for (var i in q) {
-                quotes.push(q[i]);
+                if (q[i]) {
+                    quotes.push(q[i]);
+                }
             }
             last = quotes.length - 1;
             document.body.classList.add('loaded');
@@ -22,7 +24,7 @@ window.addEventListener('load', function () {
 
         var animating = false;
         nextButton.addEventListener('click', function () {
-            if (animating) {
+            if (animating || !quotes.length) {
                 return false;
             }
 
