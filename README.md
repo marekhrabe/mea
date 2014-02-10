@@ -2,6 +2,8 @@
 
 Mea pages are pages that show famous quotes of significant people. It's mostly used for trolling websites like http://halomea.com/.
 
+To quickstart creating your page, you can download this repo and use the contents of `/template/` folder as a bootstrap for your page. Othrewise you can follow these simple instructions.
+
 ## Creating a Mea page
 
 When creating a Mea page, start with minimal template: 
@@ -9,6 +11,8 @@ When creating a Mea page, start with minimal template:
 ```
 <h1 id="quote">Default text</h1>
 <button id="next">Next quote</button>
+
+<script src="//cdn.firebase.com/js/client/1.0.3/firebase.js"></script>
 <script src="//mea.firebaseapp.com/mea.js"></script>
 ```
 
@@ -22,11 +26,36 @@ All Mea pages are open to accept new quotes. You can create an administration fo
 
 ```
 <div id="history"></div> <!-- Optional -->
-<textarea id="admin"></textarea>
+<textarea id="admin" autofocus placeholder="Add a quote"></textarea>
+
+<script src="//cdn.firebase.com/js/client/1.0.3/firebase.js"></script>
 <script src="//mea.firebaseapp.com/mea.js"></script>
 ```
 
 - Admin needs to be on the same domain as the original Mea page. It can even be in the same file as Mea page.
 - `#admin` is either `<input>` or `<textarea>`. After pressing <kbd>enter</kbd>, the quote from input will be saved.
 - If `#history` element is present, it will be filled with quotes that you saved.
-- You don't need to include `<script>` twice if the admin area is on the same page as the Mea page.
+- You don't need to include `<script>`s twice if the admin area is on the same page as the Mea page.
+
+Optionaly if you are implementing admin as a single page, you can use this stylesheet: 
+
+```
+body {
+    margin: 50px;
+}
+* {
+    color: #111;
+    text-transform: uppercase;
+    font-size: 53px;
+    background: #f4f4f4;
+    font-family: sans-serif;
+}
+#history {
+    margin-bottom: 50px;
+}
+#admin {
+    width: 100%;
+    border: 0;
+    outline: 0;
+}
+```
