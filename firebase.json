@@ -1,0 +1,5 @@
+{
+  "firebase": "mea",
+  "public": "public",
+  "rules": "config/rules.json"
+}

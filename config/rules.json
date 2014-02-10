@@ -1,0 +1,12 @@
+{
+    "rules": {
+        "quotes": {
+            "$domain": {
+                ".read": true,
+                "$quote": {
+                    ".write": "!data.exists()"
+                }
+            }
+        }
+    }
+}
